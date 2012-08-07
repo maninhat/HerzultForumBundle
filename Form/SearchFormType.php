@@ -4,6 +4,7 @@ namespace Herzult\Bundle\ForumBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class SearchFormType extends AbstractType
 {
@@ -12,12 +13,17 @@ class SearchFormType extends AbstractType
         $builder->add('query', 'text');
     }
 
-    public function getDefaultOptions()
+    /**
+     * Sets the default options
+     *
+     * @param OptionsResolverInterface $resolver Options Resolver
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
+        $resolver->setDefaults(array(
             'data_class'        => 'Herzult\Bundle\ForumBundle\Search\Search',
             'csrf_protection'   => false,
-        );
+        ));
     }
 
     public function getName()
