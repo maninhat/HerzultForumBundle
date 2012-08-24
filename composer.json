@@ -1,5 +1,5 @@
 {
-    "name": "herzult/forum-bundle",
+    "name": "maninhat/HerzultForumBundle",
     "description": "A simple Symfony forum bundle.",
     "keywords": ["symfony", "forum"],
     "homepage": "https://github.com/Herzult/HerzultForumBundle.git",
