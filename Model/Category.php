@@ -4,7 +4,7 @@ namespace Herzult\Bundle\ForumBundle\Model;
 
 use Herzult\Bundle\ForumBundle\Util\Inflector;
 
-abstract class Category
+abstract class Category implements Interfaces\Category
 {
     protected $id;
     protected $name;
@@ -200,9 +200,9 @@ abstract class Category
      *
      * Sets the last topic, null for empty category
      *
-     * @param Topic|null $topic
+     * @param Interfaces\Topic|null $topic
      */
-    public function setLastTopic($topic)
+    public function setLastTopic(Interfaces\Topic $topic=null)
     {
         $this->lastTopic = $topic;
     }
@@ -232,9 +232,9 @@ abstract class Category
      *
      * Sets the last post, null for empty category
      *
-     * @param Post|null $post
+     * @param Interfaces\Post|null $post
      */
-    public function setLastPost($post)
+    public function setLastPost(Interfaces\Post $post)
     {
         $this->lastPost = $post;
     }

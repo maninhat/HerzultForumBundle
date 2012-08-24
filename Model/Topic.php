@@ -8,7 +8,7 @@ use Herzult\Bundle\ForumBundle\Util\Inflector;
 use Gedmo\Sluggable\Util\Urlizer;
 use DateTime;
 
-abstract class Topic
+abstract class Topic  implements Interfaces\Topic
 {
     protected $id;
     /**
@@ -275,10 +275,10 @@ abstract class Topic
     /**
      * Sets the first post
      *
-     * @param Post
+     * @param Interfaces\Post
      * @return null
      */
-    public function setFirstPost(Post $post)
+    public function setFirstPost(Interfaces\Post $post)
     {
         $post->setTopic($this);
         $this->firstPost = $post;
@@ -308,9 +308,9 @@ abstract class Topic
     /**
      * Sets the category
      *
-     * @param Category $category
+     * @param Interfaces\Category $category
      */
-    public function setCategory(Category $category = null)
+    public function setCategory(Interfaces\Category $category = null)
     {
         $this->category = $category;
     }

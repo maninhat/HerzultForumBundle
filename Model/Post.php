@@ -5,7 +5,7 @@ namespace Herzult\Bundle\ForumBundle\Model;
 use DateTime;
 use Symfony\Component\Validator\Constraints as Assert;
 
-abstract class Post
+abstract class Post   implements Interfaces\Post
 {
     protected $id;
     /**
@@ -112,7 +112,7 @@ abstract class Post
         $this->createdAt = $date;
     }
 
-    public function isPosteriorTo(Post $post = null)
+    public function isPosteriorTo(Interfaces\Post $post = null)
     {
         if (!$post) {
             return true;
