@@ -144,11 +144,13 @@ abstract class Post
     /**
      * Sets the topic
      *
+     * @param Topic $topic
      * @return null
-     **/
-    public function setTopic($topic)
+     */
+    public function setTopic(Topic $topic)
     {
         $this->topic = $topic;
+
     }
 
     public function __toString()
