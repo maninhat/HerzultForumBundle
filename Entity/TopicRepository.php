@@ -12,8 +12,8 @@ class TopicRepository extends ObjectRepository implements TopicRepositoryInterfa
     public function findOneByCategoryAndSlug($category, $slug)
     {
         return $this->findOneBy(array(
-            'slug'      => $slug,
-            'category'  => $category->getId()
+            'slug' => $slug,
+            'category' => $category->getId()
         ));
     }
 
@@ -31,15 +31,15 @@ class TopicRepository extends ObjectRepository implements TopicRepositoryInterfa
     public function findAll($asPaginator = false)
     {
         $query = $this->createQueryBuilder('topic')
-                        ->orderBy('topic.isPinned', 'DESC')
-                        ->addOrderBy('topic.pulledAt', 'DESC')
-                        ->getQuery();
+            ->orderBy('topic.isPinned', 'DESC')
+            ->addOrderBy('topic.pulledAt', 'DESC')
+            ->getQuery();
         /*
         if ($asPaginator) {
             return new Pagerfanta(new DoctrineORMAdapter($query));
         } else {     */
-            return $query->execute();
-       // }
+        return $query->execute();
+        // }
     }
 
     /**
@@ -50,16 +50,14 @@ class TopicRepository extends ObjectRepository implements TopicRepositoryInterfa
         $qb = $this->createQueryBuilder('topic');
         $qb->orderBy('topic.isPinned', 'DESC')
             ->addOrderBy('topic.pulledAt', 'DESC')
-        ->join('topic.category','cat')
+            ->join('topic.category', 'cat')
             ->where($qb->expr()->eq('cat.id', $category->getId()));
-        ob_get_clean();
 
-        die(var_dump($qb->getQuery()->getSQL()));
-         /*
-        if ($asPaginator) {
-            return new Pagerfanta(new DoctrineORMAdapter($qb->getQuery()));
-        } else { */
-            return $qb->getQuery()->execute();
+        /*
+     if ($asPaginator) {
+         return new Pagerfanta(new DoctrineORMAdapter($qb->getQuery()));
+     } else { */
+        return $qb->getQuery()->execute();
         //}
     }
 
@@ -82,11 +80,11 @@ class TopicRepository extends ObjectRepository implements TopicRepositoryInterfa
     {
         $qb = $this->createQueryBuilder('topic');
         $qb->orderBy('topic.pulledAt DESC')->where($qb->expr()->like('topic.subject', '%' . $query . '%'));
-       /*
-        if ($asPaginator) {
-            return new Pagerfanta(new DoctrineORMAdapter($qb->getQuery()));
-        }
-         */
+        /*
+       if ($asPaginator) {
+           return new Pagerfanta(new DoctrineORMAdapter($qb->getQuery()));
+       }
+        */
         return $qb->getQuery->execute();
     }
 
