@@ -23,12 +23,6 @@
             <argument type="collection"/>
         </service>
 
-        <service id="herzult_forum.form.type.edit_category" class="%herzult_forum.form.edit_category.class%">
-            <argument>%herzult_forum.form.edit_category.name%</argument>
-            <argument type="collection">
-                <argument key="data_class">%herzult_forum.model.category.class%</argument>
-            </argument>
-        </service>
 
         <!-- Post Form -->
         <service id="herzult_forum.form.post" factory-method="create" factory-service="form.factory"
@@ -59,6 +53,22 @@
             <argument>%herzult_forum.form.first_post.name%</argument>
             <argument type="collection"/>
         </service>
+
+        <!-- Category Edit Form -->
+        <service id="herzult_forum.form.edit_category" factory-method="create" factory-service="form.factory"
+                 class="Symfony\Component\Form\Form">
+            <argument type="service" id="herzult_forum.form.type.edit_category"/>
+            <argument type="constant">null</argument>
+            <argument type="collection">
+                <argument key="data_class">%herzult_forum.model.category.class%</argument>
+            </argument>
+        </service>
+
+        <service id="herzult_forum.form.type.edit_category" class="%herzult_forum.form.edit_category.class%">
+            <argument>%herzult_forum.form.edit_category.name%</argument>
+            <argument type="collection"/>
+        </service>
+
 
     </services>
 
