@@ -30,9 +30,9 @@ class TopicController extends Controller
     public function createAction(Category $category = null)
     {
         $form = $this->get('herzult_forum.form.new_topic');
-        $form->bindRequest($this->get('request'));
+        $form->bind($this->get('request'));
         $topic = $form->getData();
-
+        die(var_dump($topic));
         if (!$form->isValid()) {
             $template = sprintf('%s:new.html.%s', $this->container->getParameter('herzult_forum.templating.location.topic'), $this->getRenderer());
             return $this->get('templating')->renderResponse($template, array(
