@@ -52,6 +52,7 @@ class TopicRepository extends ObjectRepository implements TopicRepositoryInterfa
             ->addOrderBy('topic.pulledAt', 'DESC')
         ->join('topic.category','cat')
             ->where($qb->expr()->eq('cat.id', $category->getId()));
+        die($qb->getQuery());
          /*
         if ($asPaginator) {
             return new Pagerfanta(new DoctrineORMAdapter($qb->getQuery()));
