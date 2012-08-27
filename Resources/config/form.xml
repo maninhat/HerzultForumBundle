@@ -1,30 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
 
         <!-- NewTopic Form -->
-        <service id="herzult_forum.form.new_topic" factory-method="create" factory-service="form.factory" class="Symfony\Component\Form\Form">
-            <argument type="service" id="herzult_forum.form.type.new_topic" />
+        <service id="herzult_forum.form.new_topic" factory-method="create" factory-service="form.factory"
+                 class="Symfony\Component\Form\Form">
+            <argument type="service" id="herzult_forum.form.type.new_topic"/>
             <argument type="constant">null</argument>
             <argument type="collection">
                 <argument key="data_class">%herzult_forum.model.topic.class%</argument>
                 <argument key="post_class">%herzult_forum.model.post.class%</argument>
-                <argument key="post_form" type="service" id="herzult_forum.form.type.post" />
+                <argument key="post_form" type="service" id="herzult_forum.form.type.post"/>
             </argument>
         </service>
 
         <service id="herzult_forum.form.type.new_topic" class="%herzult_forum.form.new_topic.class%">
             <argument>%herzult_forum.form.new_topic.name%</argument>
-            <argument type="collection" />
+            <argument type="collection"/>
+        </service>
+
+        <service id="herzult_forum.form.type.edit_category" class="%herzult_forum.form.edit_category.class%">
+            <argument>%herzult_forum.form.edit_category.name%</argument>
+            <argument type="collection">
+                <argument key="data_class">%herzult_forum.model.category.class%</argument>
+            </argument>
         </service>
 
         <!-- Post Form -->
-        <service id="herzult_forum.form.post" factory-method="create" factory-service="form.factory" class="Symfony\Component\Form\Form">
-            <argument type="service" id="herzult_forum.form.type.post" />
+        <service id="herzult_forum.form.post" factory-method="create" factory-service="form.factory"
+                 class="Symfony\Component\Form\Form">
+            <argument type="service" id="herzult_forum.form.type.post"/>
             <argument type="constant">null</argument>
             <argument type="collection">
                 <argument key="data_class">%herzult_forum.model.post.class%</argument>
@@ -33,12 +42,13 @@
 
         <service id="herzult_forum.form.type.post" class="%herzult_forum.form.post.class%">
             <argument>%herzult_forum.form.post.name%</argument>
-            <argument type="collection" />
+            <argument type="collection"/>
         </service>
 
         <!-- FirstPost Form -->
-        <service id="herzult_forum.form.first_post" factory-method="create" factory-service="form.factory" class="Symfony\Component\Form\Form">
-            <argument type="service" id="herzult_forum.form.type.first_post" />
+        <service id="herzult_forum.form.first_post" factory-method="create" factory-service="form.factory"
+                 class="Symfony\Component\Form\Form">
+            <argument type="service" id="herzult_forum.form.type.first_post"/>
             <argument type="constant">null</argument>
             <argument type="collection">
                 <argument key="data_class">%herzult_forum.model.post.class%</argument>
@@ -47,7 +57,7 @@
 
         <service id="herzult_forum.form.type.first_post" class="%herzult_forum.form.first_post.class%">
             <argument>%herzult_forum.form.first_post.name%</argument>
-            <argument type="collection" />
+            <argument type="collection"/>
         </service>
 
     </services>
