@@ -147,7 +147,7 @@ abstract class Post   implements Interfaces\Post
      * @param Topic $topic
      * @return null
      */
-    public function setTopic(Topic $topic)
+    public function setTopic(Interfaces\Topic $topic)
     {
         $this->topic = $topic;
 
