@@ -50,8 +50,7 @@ class TopicRepository extends ObjectRepository implements TopicRepositoryInterfa
         $qb = $this->createQueryBuilder('topic');
         $qb->orderBy('topic.isPinned', 'DESC')
             ->addOrderBy('topic.pulledAt', 'DESC')
-             ->innerJoin('topic.category','cat')
-            ->where($qb->expr()->eq('topic.cat.id', $category->getId()));
+            ->where($qb->expr()->eq('topic.category.id', $category->getId()));
          /*
         if ($asPaginator) {
             return new Pagerfanta(new DoctrineORMAdapter($qb->getQuery()));
@@ -78,7 +77,7 @@ class TopicRepository extends ObjectRepository implements TopicRepositoryInterfa
     public function search($query, $asPaginator = false)
     {
         $qb = $this->createQueryBuilder('topic');
-        $qb->orderBy('topic.pulledAt DESC')->where($db->expr()->like('topic.subject', '%' . $query . '%'));
+        $qb->orderBy('topic.pulledAt DESC')->where($qb->expr()->like('topic.subject', '%' . $query . '%'));
        /*
         if ($asPaginator) {
             return new Pagerfanta(new DoctrineORMAdapter($qb->getQuery()));
