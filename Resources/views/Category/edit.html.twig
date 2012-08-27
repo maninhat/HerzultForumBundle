@@ -1,0 +1,20 @@
+{% extends 'HerzultForumBundle::layout.html.twig' %}
+{% block forum_title %}Edit category{% endblock %}
+{% block forum_content %}
+<div class="forum edit_category">
+    <ul class="crumbs">
+        <li><a href="{{ path('herzult_forum_index') }}">Forum</a></li>
+        <li>{{ category.name }}</li>
+    </ul>
+    <div class="main">
+        <h2>New Topic</h2>
+        <form action="{{ path('herzult_forum_category_edit', {'slug': category.slug}) }}" method="post">
+            {{ form_widget(form) }}
+            <button type="submit" name="create">Save</button>
+        </form>
+    </div>
+    <div class="side">
+        <p><a href="{{ path('herzult_forum_index') }}">Cancel</a></p>
+    </div>
+</div>
+{% endblock %}

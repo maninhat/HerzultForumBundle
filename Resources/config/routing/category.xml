@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <routes
-    xmlns="http://symfony.com/schema/routing"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+        xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="herzult_forum_category_show" pattern="/{slug}.{_format}">
         <default key="_controller">herzult_forum.controller.category:showAction</default>
@@ -23,5 +23,8 @@
         <requirement key="_method">post</requirement>
         <requirement key="slug">[-\w]+</requirement>
     </route>
-
+    <route id="herzult_forum_category_edit" pattern="/{slug}/edit">
+        <default key="_controller">herzult_forum.controller.category:editAction</default>
+        <requirement key="slug">[-\w]+</requirement>
+    </route>
 </routes>

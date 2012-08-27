@@ -4,7 +4,7 @@ namespace Herzult\Bundle\ForumBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
+use Symfony\Component\HttpFoundation\Request;
 class CategoryController extends Controller
 {
     public function listAction()
@@ -28,6 +28,28 @@ class CategoryController extends Controller
             'category'  => $category,
             'page'      => $this->get('request')->query->get('page', 1)
         ));
+    }
+
+    public function editAction(Request $request){
+        $form= $this->get('herzult_forum.form.edit_category');
+        $category = $this->get('herzult_forum.repository.category')->findOneBySlug($request->query->get('slug'));
+        if($request->getMethod()==='GET'){
+
+        $form->setData($category);
+        }
+        else{
+            $form->bind($request);
+             if($form->isValid()){
+
+             }
+        }
+
+        $template = sprintf('%s:edit.html.%s', $this->container->getParameter('herzult_forum.templating.location.category'), $this->getRenderer());
+        return $this->get('templating')->renderResponse($template, array(
+            'form'      => $form->createView(),
+             'category'=>$category,
+        ));
+
     }
 
     public function topicNewAction($slug)

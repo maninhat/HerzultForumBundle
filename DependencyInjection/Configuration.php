@@ -45,6 +45,7 @@ class Configuration implements ConfigurationInterface
                             ->addDefaultsIfNotSet()
                             ->children()
                                 ->scalarNode('new_topic')->defaultValue('Herzult\Bundle\ForumBundle\Form\NewTopicFormType')->end()
+                                ->scalarNode('edit_category')->defaultValue('Herzult\Bundle\ForumBundle\Form\EditCategoryFormType')->end()
                                 ->scalarNode('first_post')->defaultValue('Herzult\Bundle\ForumBundle\Form\PostFormType')->end()
                                 ->scalarNode('post')->defaultValue('Herzult\Bundle\ForumBundle\Form\PostFormType')->end()
                                 ->scalarNode('search')->defaultValue('Herzult\Bundle\ForumBundle\Form\SearchFormType')->end()
