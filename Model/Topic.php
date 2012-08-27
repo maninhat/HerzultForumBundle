@@ -300,7 +300,7 @@ abstract class Topic  implements Interfaces\Topic
      * @param Post
      * @return null
      */
-    public function setLastPost(Post $post)
+    public function setLastPost(Interfaces\Post $post)
     {
         $this->lastPost = $post;
     }
