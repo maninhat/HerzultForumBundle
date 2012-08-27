@@ -32,7 +32,7 @@ class CategoryController extends Controller
 
     public function editAction(Request $request){
         $form= $this->get('herzult_forum.form.edit_category');
-        $category = $this->get('herzult_forum.repository.category')->findOneBySlug($request->query->get('slug'));
+        $category = $this->get('herzult_forum.repository.category')->findOneBySlug($request->get('slug'));
       ob_get_clean();
         die(var_dump($category));
         if($request->getMethod()==='GET'){
