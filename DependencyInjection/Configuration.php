@@ -106,6 +106,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('new_topic')->defaultValue('forum_new_topic_form')->end()
+                        ->scalarNode('edit_category')->defaultValue('forum_edit_category_form')->end()
                         ->scalarNode('first_post')->defaultValue('firstPost')->end()
                         ->scalarNode('post')->defaultValue('forum_post_form')->end()
                         ->scalarNode('search')->defaultValue('forum_search')->end()
