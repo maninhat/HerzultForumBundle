@@ -27,8 +27,8 @@ class ForumController extends Controller
         if ($form->isValid()) {
             $page = $this->get('request')->query->get('page', 1);
             $results = $this->get('herzult_forum.repository.post')->search($query, true);
-            $results->setCurrentPage($page);
-            $results->setMaxPerPage($this->container->getParameter('herzult_forum.paginator.search_results_per_page'));
+          //  $results->setCurrentPage($page);
+          //  $results->setMaxPerPage($this->container->getParameter('herzult_forum.paginator.search_results_per_page'));
         }
         
         $template = sprintf('%s:search.html.%s', $this->container->getParameter('herzult_forum.templating.location.forum'), $this->getRenderer());

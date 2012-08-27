@@ -68,8 +68,8 @@ class TopicController extends Controller
             $topics   = $this->get('herzult_forum.repository.topic')->findAllByCategory($category, true);
         }
 
-        $topics->setCurrentPage($pagerOptions['page']);
-        $topics->setMaxPerPage($this->container->getParameter('herzult_forum.paginator.topics_per_page'));
+        //$topics->setCurrentPage($pagerOptions['page']);
+        //$topics->setMaxPerPage($this->container->getParameter('herzult_forum.paginator.topics_per_page'));
 
         $template = sprintf('%s:list.%s.%s', $this->container->getParameter('herzult_forum.templating.location.topic'), $this->get('request')->getRequestFormat(), $this->getRenderer());
         return $this->get('templating')->renderResponse($template, array(
@@ -87,8 +87,8 @@ class TopicController extends Controller
         if ('html' === $this->get('request')->getRequestFormat()) {
             $page = $this->get('request')->query->get('page', 1);
             $posts = $this->get('herzult_forum.repository.post')->findAllByTopic($topic, true);
-            $posts->setCurrentPage($page);
-            $posts->setMaxPerPage($this->container->getParameter('herzult_forum.paginator.posts_per_page'));
+            //$posts->setCurrentPage($page);
+          //  $posts->setMaxPerPage($this->container->getParameter('herzult_forum.paginator.posts_per_page'));
         } else {
             $posts = $this->get('herzult_forum.repository.post')->findRecentByTopic($topic, 30);
         }
