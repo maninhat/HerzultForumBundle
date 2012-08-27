@@ -3,8 +3,6 @@
 namespace Herzult\Bundle\ForumBundle\Entity;
 
 use Herzult\Bundle\ForumBundle\Model\PostRepositoryInterface;
-use Pagerfanta\Pagerfanta;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
 
 class PostRepository extends ObjectRepository implements PostRepositoryInterface
 {
@@ -25,11 +23,11 @@ class PostRepository extends ObjectRepository implements PostRepositoryInterface
             ->orderBy('post.createdAt')
             ->where('post.topic = :topic')
             ->setParameter('topic', $topic->getId());
-
+        /*
         if ($asPaginator) {
             return new Pagerfanta(new DoctrineORMAdapter($qb->getQuery()));
         }
-
+         */
         return $qb->getQuery()->execute();
     }
 
@@ -57,11 +55,11 @@ class PostRepository extends ObjectRepository implements PostRepositoryInterface
             ->where($qb->expr()->like('post.message', $qb->expr()->literal('%' . $query . '%')))
             ->orderBy('post.createdAt')
         ;
-
+      /*
         if ($asPaginator) {
             return new Pagerfanta(new DoctrineORMAdapter($qb->getQuery()));
         }
-
+        */
         return $qb->getQuery()->execute();
     }
 

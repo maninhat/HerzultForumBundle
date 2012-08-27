@@ -3,8 +3,6 @@
 namespace Herzult\Bundle\ForumBundle\Entity;
 
 use Herzult\Bundle\ForumBundle\Model\TopicRepositoryInterface;
-use Pagerfanta\Pagerfanta;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
 
 class TopicRepository extends ObjectRepository implements TopicRepositoryInterface
 {
@@ -36,12 +34,12 @@ class TopicRepository extends ObjectRepository implements TopicRepositoryInterfa
                         ->orderBy('topic.isPinned', 'DESC')
                         ->addOrderBy('topic.pulledAt', 'DESC')
                         ->getQuery();
-
+        /*
         if ($asPaginator) {
             return new Pagerfanta(new DoctrineORMAdapter($query));
-        } else {
+        } else {     */
             return $query->execute();
-        }
+       // }
     }
 
     /**
@@ -53,12 +51,12 @@ class TopicRepository extends ObjectRepository implements TopicRepositoryInterfa
         $qb->orderBy('topic.isPinned', 'DESC')
             ->addOrderBy('topic.pulledAt', 'DESC')
             ->where($qb->expr()->eq('topic.category', $category->getId()));
-
+         /*
         if ($asPaginator) {
             return new Pagerfanta(new DoctrineORMAdapter($qb->getQuery()));
-        } else {
+        } else { */
             return $qb->getQuery()->execute();
-        }
+        //}
     }
 
     /**
@@ -80,11 +78,11 @@ class TopicRepository extends ObjectRepository implements TopicRepositoryInterfa
     {
         $qb = $this->createQueryBuilder('topic');
         $qb->orderBy('topic.pulledAt DESC')->where($db->expr()->like('topic.subject', '%' . $query . '%'));
-
+       /*
         if ($asPaginator) {
             return new Pagerfanta(new DoctrineORMAdapter($qb->getQuery()));
         }
-
+         */
         return $qb->getQuery->execute();
     }
 

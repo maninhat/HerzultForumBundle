@@ -3,8 +3,7 @@
 namespace Herzult\Bundle\ForumBundle\Document;
 
 use Herzult\Bundle\ForumBundle\Model\PostRepositoryInterface;
-use Pagerfanta\Pagerfanta;
-use Pagerfanta\Adapter\DoctrineODMMongoDBAdapter;
+
 
 class PostRepository extends ObjectRepository implements PostRepositoryInterface
 {
@@ -26,11 +25,11 @@ class PostRepository extends ObjectRepository implements PostRepositoryInterface
             ->sort('createdAt', 'ASC')
             ->field('topic.$id')
             ->equals(new \MongoId($topic->getId()));
-
+       /*
         if ($asPaginator) {
             return new Pagerfanta(new DoctrineODMMongoDBAdapter($query));
         }
-
+        */
         return array_values($query->getQuery()->execute()->toArray());
     }
 
@@ -58,11 +57,11 @@ class PostRepository extends ObjectRepository implements PostRepositoryInterface
             ->sort('createdAt', 'ASC')
             ->field('message')->equals($regexp)
         ;
-
+       /*
         if ($asPaginator) {
             return new Pagerfanta(new DoctrineODMMongoDBAdapter($query));
         }
-
+         */
         return array_values($query->getQuery()->execute()->toArray());
     }
 
