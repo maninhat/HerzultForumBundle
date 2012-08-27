@@ -54,7 +54,7 @@ class TopicRepository extends ObjectRepository implements TopicRepositoryInterfa
             ->where($qb->expr()->eq('cat.id', $category->getId()));
         ob_get_clean();
 
-        die(var_dump($qb->getQuery()));
+        die(var_dump($qb->getQuery()->getSQL()));
          /*
         if ($asPaginator) {
             return new Pagerfanta(new DoctrineORMAdapter($qb->getQuery()));
